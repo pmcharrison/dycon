@@ -3,4 +3,5 @@
 export(hutch_cbw)
 export(hutch_y)
 export(roughness_hutch)
+export(roughness_vass)
 importFrom(magrittr,"%>%")

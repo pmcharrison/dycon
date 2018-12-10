@@ -1,15 +1,17 @@
 #' Spectral roughness (Vassilakis)
 #'
-#' Gets the roughness of a spectrum according to the model of Vassilakis (2001) as reported in Villegas (2010).
-#' @param frequency Numeric vector of frequencies
-#' @param amplitude Numeric vector of amplitudes
-#' @return Numeric vector of roughnesses
+#' Gets the roughness of a spectrum according to the model of
+#' \insertCite{Vassilakis2001;textual}{dycon}
+#' \insertCite{Villegas2010;textual}{dycon}
+#' @param frequency Numeric vector of frequencies.
+#' @param amplitude Numeric vector of amplitudes.
+#' @return Numeric vector of roughnesses.
 #' @note The function assumes that any input complex tones have already
 #' been expanded into their constituent pure tones.
-#' \insertRef{Vassilakis2001}{dycon}
-#'
-#' \insertRef{Villegas2010}{dycon}
-get_roughness_vass <- function(frequency, amplitude) {
+#' @references
+#' \insertAllCited{}
+#' @export
+roughness_vass <- function(frequency, amplitude) {
   assertthat::assert_that(
     length(frequency) == length(amplitude)
   )
@@ -34,15 +36,17 @@ get_roughness_vass <- function(frequency, amplitude) {
 
 #' Dyad roughness (Vassilakis)
 #'
-#' Gets the roughness of a dyad according to the model of Vassilakis (2001) as reported in Villegas (2010).
-#' @param f1 Frequency of tone 1 (Hz) (numeric vector)
-#' @param f2 Frequency of tone 2 (Hz) (numeric vector)
-#' @param a1 amplitude of tone 1 (numeric vector)
-#' @param a2 amplitude of tone 2 (numeric vector)
-#' @return Numeric vector of roughnesses
-#' \insertRef{Vassilakis2001}{dycon}
-#'
-#' \insertRef{Villegas2010}{dycon}
+#' Gets the roughness of a dyad according to the model of
+#' \insertCite{Vassilakis2001;textual}{dycon}
+#' \insertCite{Villegas2010;textual}{dycon}
+#' @param f1 Frequency of tone 1 (Hz) (numeric vector).
+#' @param f2 Frequency of tone 2 (Hz) (numeric vector).
+#' @param a1 amplitude of tone 1 (numeric vector).
+#' @param a2 amplitude of tone 2 (numeric vector).
+#' @return Numeric vector of roughnesses.
+#' @note The function is vectorised over all inputs.
+#' @references
+#' \insertAllCited{}
 dyad_roughness_vass <- function(f1, f2, a1, a2) {
   assertthat::assert_that(
     is.numeric(f1), is.numeric(f2),

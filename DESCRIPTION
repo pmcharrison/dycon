@@ -15,5 +15,6 @@ RoxygenNote: 6.1.0
 RdMacros: Rdpack
 Suggests: 
     testthat,
-    hrep
+    hrep,
+    tibble
 Remotes: pmcharrison/hrep

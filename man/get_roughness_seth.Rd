@@ -13,8 +13,12 @@ get_roughness_seth(frequency, amplitude, seth_params = get_seth_params())
 }
 \value{
 Numeric vector of roughnesses
-\insertRef{Sethares1993}{dycon}
 }
 \description{
 Gets the roughness of a spectrum according to the model of Sethares (1993).
+}
+\note{
+The function assumes that any input complex tones have already
+been expanded into their constituent pure tones.
+\insertRef{Sethares1993}{dycon}
 }

@@ -7,20 +7,25 @@
 dyad_roughness_vass(f1, f2, a1, a2)
 }
 \arguments{
-\item{f1}{Frequency of tone 1 (Hz) (numeric vector)}
+\item{f1}{Frequency of tone 1 (Hz) (numeric vector).}
 
-\item{f2}{Frequency of tone 2 (Hz) (numeric vector)}
+\item{f2}{Frequency of tone 2 (Hz) (numeric vector).}
 
-\item{a1}{amplitude of tone 1 (numeric vector)}
+\item{a1}{amplitude of tone 1 (numeric vector).}
 
-\item{a2}{amplitude of tone 2 (numeric vector)}
+\item{a2}{amplitude of tone 2 (numeric vector).}
 }
 \value{
-Numeric vector of roughnesses
-\insertRef{Vassilakis2001}{dycon}
-
-\insertRef{Villegas2010}{dycon}
+Numeric vector of roughnesses.
 }
 \description{
-Gets the roughness of a dyad according to the model of Vassilakis (2001) as reported in Villegas (2010).
+Gets the roughness of a dyad according to the model of
+\insertCite{Vassilakis2001;textual}{dycon}
+\insertCite{Villegas2010;textual}{dycon}
+}
+\note{
+The function is vectorised over all inputs.
+}
+\references{
+\insertAllCited{}
 }
