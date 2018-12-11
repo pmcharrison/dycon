@@ -51,3 +51,17 @@ roughness_seth(f, a)
 roughness_vass(f, a)
 #> [1] 0.2232312
 ```
+
+## References
+
+Hutchinson, W., & Knopoff, L. (1978). The acoustic component of Western
+consonance. Journal of New Music Research, 7(1), 1–29.
+<https://doi.org/10.1080/09298217808570246>
+
+Sethares, W. A. (1993). Local consonance and the relationship between
+timbre and scale. The Journal of the Acoustical Society of America,
+94(3), 1218–1228.
+
+Vassilakis, P. N. (2001). Perceptual and physical properties of
+amplitude fluctuation and their musical significance. University of
+California, Los Angeles, CA.
