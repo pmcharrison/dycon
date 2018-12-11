@@ -57,13 +57,24 @@ roughness_seth <- function(frequency,
 #' @param f2 Frequency of tone 2 (Hz) (numeric vector). Must be greater than \code{f1}.
 #' @param a1 amplitude of tone 1 (numeric vector).
 #' @param a2 amplitude of tone 2 (numeric vector).
+#' @param ensure_f1_is_less_than_f2 If \code{FALSE}, assumes that \code{f1 < f2}.
+#' @param min_amplitude If \code{TRUE},
+#' roughness is considered to be proportional to
+#' the minimum amplitude of each pair of partials,
+#' rather than the product of their amplitudes.
+#' The default (\code{TRUE}) corresponds to the algorithm as updated by
+#' \insertCite{Sethares2005;textual}{dycon} and
+#' \insertCite{Weisser2013;textual}{dycon}.
+#' Set to \code{FALSE} to recover the original algorithm from
+#' \insertCite{Sethares1993;textual}{dycon}.
 #' @param a Numeric scalar parameter, optimised to 3.5 (default) in Sethares (1993).
 #' @param b Numeric scalar parameter, optimised to 5.75 (default) in Sethares (1993).
 #' @param s1 Numeric scalar parameter from Sethares (1993).
 #' @param s2 Numeric scalar parameter from Sethares (1993).
 #' @param d_star Numeric scalar parameter from Sethares (1993).
 #' @return Numeric vector of roughnesses.
-#' \insertRef{Sethares1993}{dycon}
+#' @references
+#' \insertAllCited{}
 dyad_roughness_seth <- function(f1, f2, a1, a2,
                                 ensure_f1_is_less_than_f2 = TRUE,
                                 min_amplitude = TRUE,

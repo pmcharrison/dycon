@@ -17,6 +17,18 @@ dyad_roughness_seth(f1, f2, a1, a2, ensure_f1_is_less_than_f2 = TRUE,
 
 \item{a2}{amplitude of tone 2 (numeric vector).}
 
+\item{ensure_f1_is_less_than_f2}{If \code{FALSE}, assumes that \code{f1 < f2}.}
+
+\item{min_amplitude}{If \code{TRUE},
+roughness is considered to be proportional to
+the minimum amplitude of each pair of partials,
+rather than the product of their amplitudes.
+The default (\code{TRUE}) corresponds to the algorithm as updated by
+\insertCite{Sethares2005;textual}{dycon} and
+\insertCite{Weisser2013;textual}{dycon}.
+Set to \code{FALSE} to recover the original algorithm from
+\insertCite{Sethares1993;textual}{dycon}.}
+
 \item{a}{Numeric scalar parameter, optimised to 3.5 (default) in Sethares (1993).}
 
 \item{b}{Numeric scalar parameter, optimised to 5.75 (default) in Sethares (1993).}
@@ -29,8 +41,10 @@ dyad_roughness_seth(f1, f2, a1, a2, ensure_f1_is_less_than_f2 = TRUE,
 }
 \value{
 Numeric vector of roughnesses.
-\insertRef{Sethares1993}{dycon}
 }
 \description{
 Gets the roughness of a dyad according to the model of Sethares (1993).
+}
+\references{
+\insertAllCited{}
 }
