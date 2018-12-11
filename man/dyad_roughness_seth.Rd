@@ -5,23 +5,30 @@
 \title{Dyad roughness (Sethares)}
 \usage{
 dyad_roughness_seth(f1, f2, a1, a2, ensure_f1_is_less_than_f2 = TRUE,
-  seth_params = get_seth_params())
+  min_amplitude = TRUE, a = 3.5, b = 5.75, s1 = 0.021, s2 = 19,
+  d_star = 0.24)
 }
 \arguments{
-\item{f1}{Frequency of tone 1 (Hz) (numeric vector)}
+\item{f1}{Frequency of tone 1 (Hz) (numeric vector).}
 
 \item{f2}{Frequency of tone 2 (Hz) (numeric vector). Must be greater than \code{f1}.}
 
-\item{a1}{amplitude of tone 1 (numeric vector)}
+\item{a1}{amplitude of tone 1 (numeric vector).}
 
-\item{a2}{amplitude of tone 2 (numeric vector)}
+\item{a2}{amplitude of tone 2 (numeric vector).}
 
 \item{a}{Numeric scalar parameter, optimised to 3.5 (default) in Sethares (1993).}
 
 \item{b}{Numeric scalar parameter, optimised to 5.75 (default) in Sethares (1993).}
+
+\item{s1}{Numeric scalar parameter from Sethares (1993).}
+
+\item{s2}{Numeric scalar parameter from Sethares (1993).}
+
+\item{d_star}{Numeric scalar parameter from Sethares (1993).}
 }
 \value{
-Numeric vector of roughnesses
+Numeric vector of roughnesses.
 \insertRef{Sethares1993}{dycon}
 }
 \description{
