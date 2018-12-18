@@ -3,15 +3,12 @@ context("test-sethares")
 test_that("Regression tests generated from Sethares's implementation", {
   # See below for MATLAB implementation of Sethares's (1993) model,
   # sourced from http://sethares.engr.wisc.edu/comprog.html.
-  # To reproduce the exact results, it's necessary to adjust the parameters slightly.
+  # To reproduce the exact results, it would be necessary
+  # to adjust the parameters slightly: s1 = 0.0207, s2 = 18.96, a = 3.51
   # Note that Sethares's implementation also introduces an arbitrary
   # scaling factor, which we need to compensate for in our testing.
   f <- function(frequency, amplitude, ref = TRUE) {
-    x <- roughness_seth(frequency = frequency,
-                        amplitude = amplitude,
-                        s1 = 0.0207,
-                        s2 = 18.96,
-                        a = 3.51)
+    x <- roughness_seth(hrep::fr_sparse_spectrum(list(frequency, amplitude)))
     if (ref) {
       x / f(frequency = c(440, 460), amplitude = c(1, 1), ref = FALSE)
     } else x
@@ -19,11 +16,11 @@ test_that("Regression tests generated from Sethares's implementation", {
 
   # MATLAB:
   # dissmeasure([440, 460, 480], [1, 1, 1]) / dissmeasure([440, 460], [1, 1])
-  expect_equal(f(c(440, 460, 480), c(1, 1, 1)), 2.9194, tolerance = 1e-3)
+  expect_equal(f(c(440, 460, 480), c(1, 1, 1)), 2.9194, tolerance = 1e-2)
 
-  expect_equal(f(c(440, 460, 480), c(1, 2, 3)), 3.9161, tolerance = 1e-3)
-  expect_equal(f(c(440, 460, 480), c(3, 2, 1)), 3.9194, tolerance = 1e-3)
-  expect_equal(f(c(300, 250, 275, 425), c(1.5, 2, 9, 4)), 4.8657, tolerance = 1e-3)
+  expect_equal(f(c(440, 460, 480), c(1, 2, 3)), 3.9161, tolerance = 1e-2)
+  expect_equal(f(c(440, 460, 480), c(3, 2, 1)), 3.9194, tolerance = 1e-2)
+  expect_equal(f(c(300, 250, 275, 425), c(1.5, 2, 9, 4)), 4.8657, tolerance = 1e-2)
 })
 
 # Sethares's MATLAB code:

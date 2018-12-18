@@ -32,8 +32,7 @@ test_that("Comparing model outputs to Vassilakis (2001, p. 210)", {
   }
   get_dyad_roughness <- function(pc_1, pc_2) {
     get_dyad(pc_1, pc_2) %>%
-      {roughness_vass(frequency = hrep::freq(.),
-                      amplitude = hrep::amp(.))}
+      {roughness_vass(list(hrep::freq(.), hrep::amp(.)))}
   }
 
   # These results come from p. 210

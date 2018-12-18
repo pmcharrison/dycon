@@ -2,26 +2,32 @@
 % Please edit documentation in R/vassilakis.R
 \name{roughness_vass}
 \alias{roughness_vass}
+\alias{roughness_vass.default}
+\alias{roughness_vass.fr_sparse_spectrum}
 \title{Spectral roughness (Vassilakis)}
 \usage{
-roughness_vass(frequency, amplitude)
+roughness_vass(x, ...)
+
+\method{roughness_vass}{default}(x, ...)
+
+\method{roughness_vass}{fr_sparse_spectrum}(x)
 }
 \arguments{
-\item{frequency}{Numeric vector of frequencies.}
+\item{x}{Object to analyse, which is coerced to the class
+\code{\link[hrep]{fr_sparse_spectrum}}.
+If the input is numeric, it will be treated as a vector of MIDI note numbers,
+and expanded to its implied harmonic spectrum
+(see \code{\link[hrep]{fr_sparse_spectrum}}).}
 
-\item{amplitude}{Numeric vector of amplitudes.}
+\item{...}{Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.}
 }
 \value{
-Numeric vector of roughnesses.
+Estimated roughness, as a numeric scalar.
 }
 \description{
 Gets the roughness of a spectrum according to the model of
 \insertCite{Vassilakis2001;textual}{dycon}
 \insertCite{Villegas2010;textual}{dycon}
-}
-\note{
-The function assumes that any input complex tones have already
-been expanded into their constituent pure tones.
 }
 \references{
 \insertAllCited{}

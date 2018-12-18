@@ -14,7 +14,7 @@ consonance:
 
 ## Installation
 
-You can install the current version of dycon from Github as follows:
+You can install the current version of `dycon` from Github as follows:
 
 ``` r
 if (!require(devtools)) install.packages("devtools")
@@ -23,34 +23,49 @@ devtools::install_github("dycon")
 
 ## Usage
 
-These functions take two vectors as input:
-
-  - a vector of frequencies, each corresponding to a spectral component;
-  - a vector of amplitudes, each corresponding to a spectral component.
-
-For analysing musical chords, it’s necessary to expand the notes of the
-musical chord into their implied spectral components. The `incon`
-package provides a useful wrapper for these functions that automatically
-applies this expansion.
-
-For analysing real audio, it’s necessary to compute the acoustic
-spectrum (using e.g. a Fourier Transform) and then identify the spectral
-components using a peak-picking algorithm. See the MIR Toolbox or the
-Essentia library for such implementations.
+By default, input sonorities are interpreted as vectors of MIDI note
+numbers. These notes are expanded into their implied harmonics using the
+`hrep` package (see `?hrep::fr_sparse_spectrum`).
 
 ``` r
 library(dycon)
 
-f <- c(440, 460, 520) # frequencies
-a <- c(1, 1.5, 1) # amplitudes
+# Major triad
+roughness_hutch(c(60, 64, 67)) 
+#> [1] 0.1202426
 
-roughness_hutch(f, a)
-#> [1] 0.4819797
-roughness_seth(f, a)
-#> [1] 0.3645045
-roughness_vass(f, a)
-#> [1] 0.2232312
+# Minor triad
+roughness_hutch(c(60, 63, 67)) 
+#> [1] 0.130083
+
+# Diminished triad
+roughness_hutch(c(60, 63, 66)) 
+#> [1] 0.2005575
+
+# Sethares, major triad minus minor triad
+roughness_seth(c(60, 64, 67)) - 
+  roughness_seth(c(60, 63, 67))
+#> [1] -0.01876388
+
+# Vassilakis, major triad minus minor triad
+roughness_vass(c(60, 64, 67)) - 
+  roughness_vass(c(60, 63, 67))
+#> [1] -0.0423007
 ```
+
+Alternatively, it is possible to provide a custom input frequency
+spectrum as a list of two numeric vectors: frequency and amplitude.
+
+``` r
+freq <- c(440, 480, 520)
+amp <- c(1, 1, 2)
+roughness_hutch(list(freq, amp))
+#> [1] 0.3990136
+```
+
+These representation formats can be formalised using classes from the
+`hrep` package, in particular those created by `hrep::pi_chord()` and
+`hrep::fr_sparse_spectrum()`.
 
 ## References
 

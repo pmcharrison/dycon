@@ -47,10 +47,7 @@ test_that(
 test_that("get_roughness_hutch", {
   test_midi <- function(midi, expect, num_harmonics, tolerance = 1e-3) {
     midi %>%
-      (hrep::pi_chord) %>%
-      {hrep::fr_sparse_spectrum(., num_harmonics = num_harmonics)} %>%
-      {roughness_hutch(frequency = hrep::freq(.),
-                       amplitude = hrep::amp(.))} %>%
+      roughness_hutch(num_harmonics = num_harmonics) %>%
       expect_equal(expect, tolerance = tolerance)
   }
   test_midi("60 61", 0.499, num_harmonics = 1)

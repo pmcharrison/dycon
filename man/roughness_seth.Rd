@@ -2,19 +2,29 @@
 % Please edit documentation in R/sethares.R
 \name{roughness_seth}
 \alias{roughness_seth}
+\alias{roughness_seth.default}
+\alias{roughness_seth.fr_sparse_spectrum}
 \title{Spectral roughness (Sethares)}
 \usage{
-roughness_seth(frequency, amplitude, ...)
+roughness_seth(x, min_amplitude = TRUE, ...)
+
+\method{roughness_seth}{default}(x, min_amplitude = TRUE, ...)
+
+\method{roughness_seth}{fr_sparse_spectrum}(x, min_amplitude = TRUE)
 }
 \arguments{
-\item{frequency}{Numeric vector of frequencies.}
+\item{x}{Object to analyse, which is coerced to the class
+\code{\link[hrep]{fr_sparse_spectrum}}.
+If the input is numeric, it will be treated as a vector of MIDI note numbers,
+and expanded to its implied harmonic spectrum
+(see \code{\link[hrep]{fr_sparse_spectrum}}).}
 
-\item{amplitude}{Numeric vector of amplitudes.}
+\item{min_amplitude}{See \code{\link{dyad_roughness_seth}}.}
 
-\item{...}{Further parameters to be passed to \code{\link{dyad_roughness_seth}}.}
+\item{...}{Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.}
 }
 \value{
-Numeric vector of roughnesses.
+Estimated roughness, as a numeric scalar.
 }
 \description{
 Gets the roughness of a spectrum according to the model of Sethares (1993).
@@ -26,9 +36,6 @@ not the product of their amplitudes.
 This behaviour can be disabled by setting \code{min_amplitude = FALSE}.
 }
 \note{
-The function assumes that any input complex tones have already
-been expanded into their constituent pure tones.
-
 \insertCite{Sethares2005;textual}{dycon}
 suggests using loudnesses instead of amplitudes.
 However, he acknowledges that loudness is difficult to calculate

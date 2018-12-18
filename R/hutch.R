@@ -2,27 +2,36 @@
 #'
 #' Gets the roughness of a spectrum according to the model of
 #' \insertCite{Hutchinson1978;textual}{dycon}.
-#' @param frequency Numeric vector of frequencies.
-#' @param amplitude Numeric vector of amplitudes.
+#' @param x Object to analyse, which is coerced to the class
+#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' If the input is numeric, it will be treated as a vector of MIDI note numbers,
+#' and expanded to its implied harmonic spectrum
+#' (see \code{\link[hrep]{fr_sparse_spectrum}}).
 #' @param a Parameter passed to \code{\link{hutch_g}()}.
 #' @param b Parameter passed to \code{\link{hutch_g}()}.
 #' @param cbw_cut_off Parameter passed to \code{\link{hutch_g}()}.
 #' @return Numeric scalar, identifying the roughness of the spectrum.
-#' @note The function assumes that any input complex tones have already
-#' been expanded into their constituent pure tones.
 #' @references
 #' \insertAllCited{}
+#' @rdname roughness_hutch
 #' @export
-roughness_hutch <- function(
-  frequency,
-  amplitude,
-  cbw_cut_off = 1.2,
-  a = 0.25,
-  b = 2
-) {
-  assertthat::assert_that(
-    length(frequency) == length(amplitude)
-  )
+roughness_hutch <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
+  UseMethod("roughness_hutch")
+}
+
+#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @rdname roughness_hutch
+#' @export
+roughness_hutch.default <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
+  x <- hrep::fr_sparse_spectrum(x, ...)
+  roughness_hutch(x, cbw_cut_off = cbw_cut_off, a = a, b = b)
+}
+
+#' @rdname roughness_hutch
+#' @export
+roughness_hutch.fr_sparse_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2) {
+  frequency <- hrep::freq(x)
+  amplitude <- hrep::amp(x)
   n <- length(frequency)
   if (n < 2) 0 else {
     # Compute denominator

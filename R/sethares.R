@@ -7,12 +7,13 @@
 #' roughness is proportional to the minimum amplitude of each pair of partials,
 #' not the product of their amplitudes.
 #' This behaviour can be disabled by setting \code{min_amplitude = FALSE}.
-#' @param frequency Numeric vector of frequencies.
-#' @param amplitude Numeric vector of amplitudes.
-#' @param ... Further parameters to be passed to \code{\link{dyad_roughness_seth}}.
-#' @return Numeric vector of roughnesses.
-#' @note The function assumes that any input complex tones have already
-#' been expanded into their constituent pure tones.
+#' @param x Object to analyse, which is coerced to the class
+#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' If the input is numeric, it will be treated as a vector of MIDI note numbers,
+#' and expanded to its implied harmonic spectrum
+#' (see \code{\link[hrep]{fr_sparse_spectrum}}).
+#' @param min_amplitude See \code{\link{dyad_roughness_seth}}.
+#' @return Estimated roughness, as a numeric scalar.
 #' @note \insertCite{Sethares2005;textual}{dycon}
 #' suggests using loudnesses instead of amplitudes.
 #' However, he acknowledges that loudness is difficult to calculate
@@ -24,13 +25,25 @@
 #' consistent with \insertCite{Sethares1993;textual}{dycon}.
 #' @references
 #' \insertAllCited{}
+#' @rdname roughness_seth
 #' @export
-roughness_seth <- function(frequency,
-                           amplitude,
-                           ...) {
-  assertthat::assert_that(
-    length(frequency) == length(amplitude)
-  )
+roughness_seth <- function(x, min_amplitude = TRUE, ...) {
+  UseMethod("roughness_seth")
+}
+
+#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @rdname roughness_seth
+#' @export
+roughness_seth.default <- function(x, min_amplitude = TRUE, ...) {
+  x <- hrep::fr_sparse_spectrum(x, ...)
+  roughness_seth(x, min_amplitude = min_amplitude)
+}
+
+#' @rdname roughness_seth
+#' @export
+roughness_seth.fr_sparse_spectrum <- function(x, min_amplitude = TRUE) {
+  frequency <- hrep::freq(x)
+  amplitude <- hrep::amp(x)
   n <- length(frequency)
   if (n < 2) 0 else {
     # The formula given in Sethares (1993) iterates over all pairs of [i, j],
@@ -45,7 +58,7 @@ roughness_seth <- function(frequency,
       f2 = frequency[df$j],
       a1 = amplitude[df$i],
       a2 = amplitude[df$j],
-      ...
+      min_amplitude = min_amplitude
     ) %>% sum
   }
 }

@@ -3,18 +3,33 @@
 #' Gets the roughness of a spectrum according to the model of
 #' \insertCite{Vassilakis2001;textual}{dycon}
 #' \insertCite{Villegas2010;textual}{dycon}
-#' @param frequency Numeric vector of frequencies.
-#' @param amplitude Numeric vector of amplitudes.
-#' @return Numeric vector of roughnesses.
-#' @note The function assumes that any input complex tones have already
-#' been expanded into their constituent pure tones.
+#' @param x Object to analyse, which is coerced to the class
+#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' If the input is numeric, it will be treated as a vector of MIDI note numbers,
+#' and expanded to its implied harmonic spectrum
+#' (see \code{\link[hrep]{fr_sparse_spectrum}}).
+#' @return Estimated roughness, as a numeric scalar.
 #' @references
 #' \insertAllCited{}
+#' @rdname roughness_vass
 #' @export
-roughness_vass <- function(frequency, amplitude) {
-  assertthat::assert_that(
-    length(frequency) == length(amplitude)
-  )
+roughness_vass <- function(x, ...) {
+  UseMethod("roughness_vass")
+}
+
+#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @rdname roughness_vass
+#' @export
+roughness_vass.default <- function(x, ...) {
+  x <- hrep::fr_sparse_spectrum(x, ...)
+  roughness_vass(x)
+}
+
+#' @rdname roughness_vass
+#' @export
+roughness_vass.fr_sparse_spectrum <- function(x) {
+  frequency <- hrep::freq(x)
+  amplitude <- hrep::amp(x)
   n <- length(frequency)
   if (n < 2) 0 else {
     # Roughness is computed by summing over all dyadic roughnesses.
