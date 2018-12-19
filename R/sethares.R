@@ -9,9 +9,11 @@
 #' This behaviour can be disabled by setting \code{min_amplitude = FALSE}.
 #' @param x Object to analyse, which is coerced to the class
 #' \code{\link[hrep]{fr_sparse_spectrum}}.
-#' If the input is numeric, it will be treated as a vector of MIDI note numbers,
-#' and expanded to its implied harmonic spectrum
-#' (see \code{\link[hrep]{fr_sparse_spectrum}}).
+#' * Numeric vectors will be treated as vectors of MIDI note numbers,
+#' and expanded into their implied harmonics.
+#' * Two-element lists will be treated as finalised spectra,
+#' with the first element being a numeric vector of frequencies,
+#' and the second element being a numeric vector of amplitudes.
 #' @param min_amplitude See \code{\link{dyad_roughness_seth}}.
 #' @return Estimated roughness, as a numeric scalar.
 #' @note \insertCite{Sethares2005;textual}{dycon}
@@ -26,6 +28,7 @@
 #' @references
 #' \insertAllCited{}
 #' @rdname roughness_seth
+#' @md
 #' @export
 roughness_seth <- function(x, min_amplitude = TRUE, ...) {
   UseMethod("roughness_seth")

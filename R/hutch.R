@@ -4,9 +4,11 @@
 #' \insertCite{Hutchinson1978;textual}{dycon}.
 #' @param x Object to analyse, which is coerced to the class
 #' \code{\link[hrep]{fr_sparse_spectrum}}.
-#' If the input is numeric, it will be treated as a vector of MIDI note numbers,
-#' and expanded to its implied harmonic spectrum
-#' (see \code{\link[hrep]{fr_sparse_spectrum}}).
+#' * Numeric vectors will be treated as vectors of MIDI note numbers,
+#' and expanded into their implied harmonics.
+#' * Two-element lists will be treated as finalised spectra,
+#' with the first element being a numeric vector of frequencies,
+#' and the second element being a numeric vector of amplitudes.
 #' @param a Parameter passed to \code{\link{hutch_g}()}.
 #' @param b Parameter passed to \code{\link{hutch_g}()}.
 #' @param cbw_cut_off Parameter passed to \code{\link{hutch_g}()}.
@@ -14,6 +16,7 @@
 #' @references
 #' \insertAllCited{}
 #' @rdname roughness_hutch
+#' @md
 #' @export
 roughness_hutch <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
   UseMethod("roughness_hutch")
