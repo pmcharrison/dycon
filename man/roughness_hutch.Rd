@@ -33,7 +33,7 @@ and expanded to its implied harmonic spectrum
 Numeric scalar, identifying the roughness of the spectrum.
 }
 \description{
-Gets the roughness of a spectrum according to the model of
+Gets the roughness of a sonority according to the model of
 \insertCite{Hutchinson1978;textual}{dycon}.
 }
 \references{

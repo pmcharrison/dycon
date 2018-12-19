@@ -1,6 +1,6 @@
 #' Spectral roughness (Hutchinson & Knopoff)
 #'
-#' Gets the roughness of a spectrum according to the model of
+#' Gets the roughness of a sonority according to the model of
 #' \insertCite{Hutchinson1978;textual}{dycon}.
 #' @param x Object to analyse, which is coerced to the class
 #' \code{\link[hrep]{fr_sparse_spectrum}}.
