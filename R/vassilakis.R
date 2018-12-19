@@ -1,6 +1,6 @@
 #' Spectral roughness (Vassilakis)
 #'
-#' Gets the roughness of a spectrum according to the model of
+#' Gets the roughness of a sonority according to the model of
 #' \insertCite{Vassilakis2001;textual}{dycon}
 #' \insertCite{Villegas2010;textual}{dycon}
 #' @param x Object to analyse, which is coerced to the class

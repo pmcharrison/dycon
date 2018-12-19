@@ -1,6 +1,6 @@
 #' Spectral roughness (Sethares)
 #'
-#' Gets the roughness of a spectrum according to the model of Sethares (1993).
+#' Gets the roughness of a sonority according to the model of Sethares (1993).
 #' By default, the algorithm is modified according to
 #' \insertCite{Sethares2005;textual}{dycon} and
 #' \insertCite{Weisser2013;textual}{dycon}:
