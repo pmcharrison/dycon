@@ -4,7 +4,7 @@
 #' \insertCite{Vassilakis2001;textual}{dycon}
 #' \insertCite{Villegas2010;textual}{dycon}
 #' @param x Object to analyse, which is coerced to the class
-#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' \code{\link[hrep]{sparse_fr_spectrum}}.
 #' * Numeric vectors will be treated as vectors of MIDI note numbers,
 #' and expanded into their implied harmonics.
 #' * Two-element lists will be treated as finalised spectra,
@@ -20,17 +20,17 @@ roughness_vass <- function(x, ...) {
   UseMethod("roughness_vass")
 }
 
-#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @param ... Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.
 #' @rdname roughness_vass
 #' @export
 roughness_vass.default <- function(x, ...) {
-  x <- hrep::fr_sparse_spectrum(x, ...)
+  x <- hrep::sparse_fr_spectrum(x, ...)
   roughness_vass(x)
 }
 
 #' @rdname roughness_vass
 #' @export
-roughness_vass.fr_sparse_spectrum <- function(x) {
+roughness_vass.sparse_fr_spectrum <- function(x) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

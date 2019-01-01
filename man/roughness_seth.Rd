@@ -3,18 +3,18 @@
 \name{roughness_seth}
 \alias{roughness_seth}
 \alias{roughness_seth.default}
-\alias{roughness_seth.fr_sparse_spectrum}
+\alias{roughness_seth.sparse_fr_spectrum}
 \title{Spectral roughness (Sethares)}
 \usage{
 roughness_seth(x, min_amplitude = TRUE, ...)
 
 \method{roughness_seth}{default}(x, min_amplitude = TRUE, ...)
 
-\method{roughness_seth}{fr_sparse_spectrum}(x, min_amplitude = TRUE)
+\method{roughness_seth}{sparse_fr_spectrum}(x, min_amplitude = TRUE)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class
-\code{\link[hrep]{fr_sparse_spectrum}}.
+\code{\link[hrep]{sparse_fr_spectrum}}.
 \itemize{
 \item Numeric vectors will be treated as vectors of MIDI note numbers,
 and expanded into their implied harmonics.
@@ -25,7 +25,7 @@ and the second element being a numeric vector of amplitudes.
 
 \item{min_amplitude}{See \code{\link{dyad_roughness_seth}}.}
 
-\item{...}{Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.}
+\item{...}{Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.}
 }
 \value{
 Estimated roughness, as a numeric scalar.

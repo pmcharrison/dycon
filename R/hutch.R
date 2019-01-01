@@ -3,7 +3,7 @@
 #' Gets the roughness of a sonority according to the model of
 #' \insertCite{Hutchinson1978;textual}{dycon}.
 #' @param x Object to analyse, which is coerced to the class
-#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' \code{\link[hrep]{sparse_fr_spectrum}}.
 #' * Numeric vectors will be treated as vectors of MIDI note numbers,
 #' and expanded into their implied harmonics.
 #' * Two-element lists will be treated as finalised spectra,
@@ -22,17 +22,17 @@ roughness_hutch <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
   UseMethod("roughness_hutch")
 }
 
-#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @param ... Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.
 #' @rdname roughness_hutch
 #' @export
 roughness_hutch.default <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
-  x <- hrep::fr_sparse_spectrum(x, ...)
+  x <- hrep::sparse_fr_spectrum(x, ...)
   roughness_hutch(x, cbw_cut_off = cbw_cut_off, a = a, b = b)
 }
 
 #' @rdname roughness_hutch
 #' @export
-roughness_hutch.fr_sparse_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2) {
+roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

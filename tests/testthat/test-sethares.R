@@ -8,7 +8,7 @@ test_that("Regression tests generated from Sethares's implementation", {
   # Note that Sethares's implementation also introduces an arbitrary
   # scaling factor, which we need to compensate for in our testing.
   f <- function(frequency, amplitude, ref = TRUE) {
-    x <- roughness_seth(hrep::fr_sparse_spectrum(list(frequency, amplitude)))
+    x <- roughness_seth(hrep::sparse_fr_spectrum(list(frequency, amplitude)))
     if (ref) {
       x / f(frequency = c(440, 460), amplitude = c(1, 1), ref = FALSE)
     } else x

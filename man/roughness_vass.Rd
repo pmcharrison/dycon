@@ -3,18 +3,18 @@
 \name{roughness_vass}
 \alias{roughness_vass}
 \alias{roughness_vass.default}
-\alias{roughness_vass.fr_sparse_spectrum}
+\alias{roughness_vass.sparse_fr_spectrum}
 \title{Spectral roughness (Vassilakis)}
 \usage{
 roughness_vass(x, ...)
 
 \method{roughness_vass}{default}(x, ...)
 
-\method{roughness_vass}{fr_sparse_spectrum}(x)
+\method{roughness_vass}{sparse_fr_spectrum}(x)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class
-\code{\link[hrep]{fr_sparse_spectrum}}.
+\code{\link[hrep]{sparse_fr_spectrum}}.
 \itemize{
 \item Numeric vectors will be treated as vectors of MIDI note numbers,
 and expanded into their implied harmonics.
@@ -23,7 +23,7 @@ with the first element being a numeric vector of frequencies,
 and the second element being a numeric vector of amplitudes.
 }}
 
-\item{...}{Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.}
+\item{...}{Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.}
 }
 \value{
 Estimated roughness, as a numeric scalar.

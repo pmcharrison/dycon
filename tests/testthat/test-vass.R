@@ -23,8 +23,7 @@ test_that("Comparing model outputs to Vassilakis (2001, p. 210)", {
   )
   .a <- 1 / 1:6
   get_tone <- function(pc) {
-    hrep::.fr_sparse_spectrum(frequency = as.numeric(.f[pc + 1, ]),
-                              amplitude = .a)
+    hrep::sparse_fr_spectrum(list(as.numeric(.f[pc + 1, ]), .a))
   }
   get_dyad <- function(pc_1, pc_2) {
     c(get_tone(pc_1),

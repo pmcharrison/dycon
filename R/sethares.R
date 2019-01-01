@@ -8,7 +8,7 @@
 #' not the product of their amplitudes.
 #' This behaviour can be disabled by setting \code{min_amplitude = FALSE}.
 #' @param x Object to analyse, which is coerced to the class
-#' \code{\link[hrep]{fr_sparse_spectrum}}.
+#' \code{\link[hrep]{sparse_fr_spectrum}}.
 #' * Numeric vectors will be treated as vectors of MIDI note numbers,
 #' and expanded into their implied harmonics.
 #' * Two-element lists will be treated as finalised spectra,
@@ -34,17 +34,17 @@ roughness_seth <- function(x, min_amplitude = TRUE, ...) {
   UseMethod("roughness_seth")
 }
 
-#' @param ... Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.
+#' @param ... Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.
 #' @rdname roughness_seth
 #' @export
 roughness_seth.default <- function(x, min_amplitude = TRUE, ...) {
-  x <- hrep::fr_sparse_spectrum(x, ...)
+  x <- hrep::sparse_fr_spectrum(x, ...)
   roughness_seth(x, min_amplitude = min_amplitude)
 }
 
 #' @rdname roughness_seth
 #' @export
-roughness_seth.fr_sparse_spectrum <- function(x, min_amplitude = TRUE) {
+roughness_seth.sparse_fr_spectrum <- function(x, min_amplitude = TRUE) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

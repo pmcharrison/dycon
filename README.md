@@ -25,7 +25,7 @@ devtools::install_github("dycon")
 
 By default, input sonorities are interpreted as vectors of MIDI note
 numbers. These notes are expanded into their implied harmonics using the
-`hrep` package (see `?hrep::fr_sparse_spectrum`).
+`hrep` package (see `?hrep::sparse_fr_spectrum`).
 
 ``` r
 library(dycon)
@@ -65,7 +65,7 @@ roughness_hutch(list(freq, amp))
 
 These representation formats can be formalised using classes from the
 `hrep` package, in particular those created by `hrep::pi_chord()` and
-`hrep::fr_sparse_spectrum()`.
+`hrep::sparse_fr_spectrum()`.
 
 ## References
 

@@ -3,7 +3,7 @@
 \name{roughness_hutch}
 \alias{roughness_hutch}
 \alias{roughness_hutch.default}
-\alias{roughness_hutch.fr_sparse_spectrum}
+\alias{roughness_hutch.sparse_fr_spectrum}
 \title{Spectral roughness (Hutchinson & Knopoff)}
 \usage{
 roughness_hutch(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
@@ -11,12 +11,12 @@ roughness_hutch(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
 \method{roughness_hutch}{default}(x, cbw_cut_off = 1.2, a = 0.25,
   b = 2, ...)
 
-\method{roughness_hutch}{fr_sparse_spectrum}(x, cbw_cut_off = 1.2,
+\method{roughness_hutch}{sparse_fr_spectrum}(x, cbw_cut_off = 1.2,
   a = 0.25, b = 2)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class
-\code{\link[hrep]{fr_sparse_spectrum}}.
+\code{\link[hrep]{sparse_fr_spectrum}}.
 \itemize{
 \item Numeric vectors will be treated as vectors of MIDI note numbers,
 and expanded into their implied harmonics.
@@ -31,7 +31,7 @@ and the second element being a numeric vector of amplitudes.
 
 \item{b}{Parameter passed to \code{\link{hutch_g}()}.}
 
-\item{...}{Further arguments to pass to \code{\link[hrep]{fr_sparse_spectrum}}.}
+\item{...}{Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.}
 }
 \value{
 Numeric scalar, identifying the roughness of the spectrum.
