@@ -30,7 +30,7 @@ roughness_vass.default <- function(x, ...) {
 
 #' @rdname roughness_vass
 #' @export
-roughness_vass.sparse_fr_spectrum <- function(x) {
+roughness_vass.sparse_fr_spectrum <- function(x, ...) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

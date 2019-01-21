@@ -4,14 +4,7 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+
 # dycon: Dyadic Models of Consonance
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -40,34 +33,42 @@ By default, input sonorities are interpreted as vectors of MIDI note numbers.
 These notes are expanded into their implied harmonics using the `hrep` package
 (see `?hrep::sparse_fr_spectrum`).
 
-```{r}
+
+```r
 library(dycon)
 
 # Major triad
 roughness_hutch(c(60, 64, 67)) 
+#> [1] 0.1202426
 
 # Minor triad
 roughness_hutch(c(60, 63, 67)) 
+#> [1] 0.130083
 
 # Diminished triad
 roughness_hutch(c(60, 63, 66)) 
+#> [1] 0.2005575
 
 # Sethares, major triad minus minor triad
 roughness_seth(c(60, 64, 67)) - 
   roughness_seth(c(60, 63, 67))
+#> [1] -0.01876388
 
 # Vassilakis, major triad minus minor triad
 roughness_vass(c(60, 64, 67)) - 
   roughness_vass(c(60, 63, 67))
+#> [1] -0.0423007
 ```
 
 Alternatively, it is possible to provide a custom input frequency spectrum
 as a list of two numeric vectors: frequency and amplitude.
 
-```{r}
+
+```r
 freq <- c(440, 480, 520)
 amp <- c(1, 1, 2)
 roughness_hutch(list(freq, amp))
+#> [1] 0.3990136
 ```
 
 These representation formats can be formalised using classes from the `hrep` package,

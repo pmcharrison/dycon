@@ -10,7 +10,7 @@ roughness_vass(x, ...)
 
 \method{roughness_vass}{default}(x, ...)
 
-\method{roughness_vass}{sparse_fr_spectrum}(x)
+\method{roughness_vass}{sparse_fr_spectrum}(x, ...)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class

@@ -3,7 +3,13 @@
 
 # dycon: Dyadic Models of Consonance
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Travis build
+status](https://travis-ci.org/pmcharrison/dycon.svg?branch=master)](https://travis-ci.org/pmcharrison/dycon)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/pmcharrison/dycon?branch=master&svg=true)](https://ci.appveyor.com/project/pmcharrison/dycon)
+[![Coverage
+status](https://coveralls.io/repos/github/pmcharrison/dycon/badge.svg)](https://coveralls.io/r/pmcharrison/dycon?branch=master)
 
 `dycon` is an R package that implements three dyadic models of
 consonance:

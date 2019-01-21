@@ -10,7 +10,7 @@ roughness_seth(x, min_amplitude = TRUE, ...)
 
 \method{roughness_seth}{default}(x, min_amplitude = TRUE, ...)
 
-\method{roughness_seth}{sparse_fr_spectrum}(x, min_amplitude = TRUE)
+\method{roughness_seth}{sparse_fr_spectrum}(x, min_amplitude = TRUE, ...)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class

@@ -44,7 +44,7 @@ roughness_seth.default <- function(x, min_amplitude = TRUE, ...) {
 
 #' @rdname roughness_seth
 #' @export
-roughness_seth.sparse_fr_spectrum <- function(x, min_amplitude = TRUE) {
+roughness_seth.sparse_fr_spectrum <- function(x, min_amplitude = TRUE, ...) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

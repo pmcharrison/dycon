@@ -32,7 +32,7 @@ roughness_hutch.default <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) 
 
 #' @rdname roughness_hutch
 #' @export
-roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2) {
+roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

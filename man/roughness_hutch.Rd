@@ -12,7 +12,7 @@ roughness_hutch(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
   b = 2, ...)
 
 \method{roughness_hutch}{sparse_fr_spectrum}(x, cbw_cut_off = 1.2,
-  a = 0.25, b = 2)
+  a = 0.25, b = 2, ...)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class
