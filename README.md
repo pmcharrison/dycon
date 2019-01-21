@@ -10,6 +10,7 @@ status](https://travis-ci.org/pmcharrison/dycon.svg?branch=master)](https://trav
 status](https://ci.appveyor.com/api/projects/status/github/pmcharrison/dycon?branch=master&svg=true)](https://ci.appveyor.com/project/pmcharrison/dycon)
 [![Coverage
 status](https://coveralls.io/repos/github/pmcharrison/dycon/badge.svg)](https://coveralls.io/r/pmcharrison/dycon?branch=master)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2545750.svg)](https://doi.org/10.5281/zenodo.2545750)
 
 `dycon` is an R package that implements three dyadic models of
 consonance:
