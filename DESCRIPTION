@@ -10,12 +10,16 @@ LazyData: true
 Imports: 
     assertthat,
     magrittr,
-    Rdpack
+    hrep,
+    dplyr,
+    tibble,
+    Rdpack,
+    purrr,
+    rlang,
+    ggplot2
 RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Suggests: 
     testthat,
-    hrep,
-    tibble,
     covr
 Remotes: pmcharrison/hrep
