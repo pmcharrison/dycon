@@ -112,6 +112,7 @@ hutch_y <- function(f1, f2) {
 #' @return (Numeric vector) Dissonance factors.
 #' @references
 #'   \insertAllCited{}
+#' @export
 hutch_g <- function(y, cbw_cut_off = 1.2, a = 0.25, b = 2) {
   assertthat::assert_that(
     is.numeric(y), all(y >= 0),
