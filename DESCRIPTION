@@ -8,18 +8,18 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    assertthat,
-    magrittr,
-    hrep,
-    dplyr,
-    tibble,
-    Rdpack,
-    purrr,
-    rlang,
-    ggplot2
+    assertthat (>= 0.2.1),
+    magrittr (>= 1.5),
+    hrep (>= 0.11.0),
+    dplyr (>= 0.8.3),
+    tibble (>= 2.1.3),
+    Rdpack (>= 0.11.0),
+    purrr (>= 0.3.2),
+    rlang (>= 0.4.0),
+    ggplot2 (>= 3.1.0.9000)
 RoxygenNote: 6.1.1
 RdMacros: Rdpack
 Suggests: 
-    testthat,
-    covr
+    testthat (>= 2.1.1),
+    covr (>= 3.2.1)
 Remotes: pmcharrison/hrep

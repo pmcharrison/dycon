@@ -26,8 +26,8 @@ test_that("Comparing model outputs to Vassilakis (2001, p. 210)", {
     hrep::sparse_fr_spectrum(list(as.numeric(.f[pc + 1, ]), .a))
   }
   get_dyad <- function(pc_1, pc_2) {
-    c(get_tone(pc_1),
-      get_tone(pc_2))
+    hrep::combine_sparse_spectra(get_tone(pc_1),
+                                 get_tone(pc_2))
   }
   get_dyad_roughness <- function(pc_1, pc_2) {
     get_dyad(pc_1, pc_2) %>%
