@@ -1,6 +1,6 @@
 Package: dycon
 Title: Dyadic Models of Consonance
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("Peter", "Harrison", email = "pmc.harrison@gmail.com", role = c("aut", "cre"))
 Description: Implements dyadic models of consonance, such as that of Hutchinson & Knopoff (1978).
 Depends: R (>= 3.4.0)

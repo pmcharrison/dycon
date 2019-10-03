@@ -1,3 +1,5 @@
+# dycon 0.2.1
+
 - Exported `hutch_g`.
 
 # dycon 0.2.0
