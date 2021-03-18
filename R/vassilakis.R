@@ -31,6 +31,8 @@ roughness_vass.default <- function(x, ...) {
 #' @rdname roughness_vass
 #' @export
 roughness_vass.sparse_fr_spectrum <- function(x, ...) {
+  tolerance <- 1e-5
+  x <- x[x$y > tolerance, ] # eliminate partials with near-zero weight
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)

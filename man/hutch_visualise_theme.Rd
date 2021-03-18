@@ -4,7 +4,9 @@
 \name{hutch_visualise_theme}
 \alias{hutch_visualise_theme}
 \title{ggplot theme}
-\format{An object of class \code{theme} (inherits from \code{gg}) of length 60.}
+\format{
+An object of class \code{theme} (inherits from \code{gg}) of length 93.
+}
 \usage{
 hutch_visualise_theme
 }

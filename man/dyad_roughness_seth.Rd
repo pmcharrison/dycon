@@ -4,9 +4,19 @@
 \alias{dyad_roughness_seth}
 \title{Dyad roughness (Sethares)}
 \usage{
-dyad_roughness_seth(f1, f2, a1, a2, ensure_f1_is_less_than_f2 = TRUE,
-  min_amplitude = TRUE, a = 3.5, b = 5.75, s1 = 0.021, s2 = 19,
-  d_star = 0.24)
+dyad_roughness_seth(
+  f1,
+  f2,
+  a1,
+  a2,
+  ensure_f1_is_less_than_f2 = TRUE,
+  min_amplitude = TRUE,
+  a = 3.5,
+  b = 5.75,
+  s1 = 0.021,
+  s2 = 19,
+  d_star = 0.24
+)
 }
 \arguments{
 \item{f1}{Frequency of tone 1 (Hz) (numeric vector).}

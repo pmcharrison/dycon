@@ -4,10 +4,19 @@
 \alias{hutch_visualise}
 \title{Visualise}
 \usage{
-hutch_visualise(x, cbw_cut_off = 1.2, a = 0.25, b = 2,
-  label = "Roughness", amplitude_breaks = c(0, 1),
-  colour_limits = c(0, 3), colour_low = "darkblue",
-  colour_high = "red", theme = hutch_visualise_theme, ...)
+hutch_visualise(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  label = "Roughness",
+  amplitude_breaks = c(0, 1),
+  colour_limits = c(0, 3),
+  colour_low = "darkblue",
+  colour_high = "red",
+  theme = hutch_visualise_theme,
+  ...
+)
 }
 \arguments{
 \item{x}{Passed to \code{\link{roughness_hutch}}.}

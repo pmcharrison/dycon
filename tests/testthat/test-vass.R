@@ -48,3 +48,11 @@ test_that("Comparing model outputs to Vassilakis (2001, p. 210)", {
 
   expect_gt(cor(res$old, res$new), 0.998)
 })
+
+test_that("zero amplitudes", {
+  # The original version sometimes returned NaN when the spectrum contained
+  # amplitudes of magnitude zero
+  spectrum <- hrep:::.sparse_fr_spectrum(frequency = c(400, 420, 440, 600),
+                                         amplitude = c(1, 0, 0, 1))
+  expect_false(is.na(roughness_vass(spectrum)))
+})
