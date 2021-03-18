@@ -1,3 +1,5 @@
+# dycon 0.2.2
+
 - Fixed issue whereby amplitudes of size 0 could cause `roughness_vass` to return `NaN`.
 
 # dycon 0.2.1
