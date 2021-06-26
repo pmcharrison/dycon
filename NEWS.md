@@ -1,3 +1,5 @@
+- Added support for customised dissonance functions to `roughness_hutch`.
+
 # dycon 0.2.2
 
 - Fixed issue whereby amplitudes of size 0 could cause `roughness_vass` to return `NaN`.

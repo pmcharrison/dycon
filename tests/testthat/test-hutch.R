@@ -55,4 +55,9 @@ test_that("get_roughness_hutch", {
   test_midi("60 61", 0.484, num_harmonics = 11)
   test_midi("60 64 67", 0.120, num_harmonics = 11)
   test_midi("60 63 67", 0.130, num_harmonics = 11)
+
+  expect_equal(
+    roughness_hutch(c(60, 61), dissonance_function = function(...) 0),
+    0
+  )
 })

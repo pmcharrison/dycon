@@ -6,11 +6,32 @@
 \alias{roughness_hutch.sparse_fr_spectrum}
 \title{Spectral roughness (Hutchinson & Knopoff)}
 \usage{
-roughness_hutch(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
+roughness_hutch(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...
+)
 
-\method{roughness_hutch}{default}(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
+\method{roughness_hutch}{default}(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...
+)
 
-\method{roughness_hutch}{sparse_fr_spectrum}(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...)
+\method{roughness_hutch}{sparse_fr_spectrum}(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...
+)
 }
 \arguments{
 \item{x}{Object to analyse, which is coerced to the class
@@ -28,6 +49,11 @@ and the second element being a numeric vector of amplitudes.
 \item{a}{Parameter passed to \code{\link{hutch_g}()}.}
 
 \item{b}{Parameter passed to \code{\link{hutch_g}()}.}
+
+\item{dissonance_function}{Function for computing dissonance contribution as a function of
+critical bandwidth distance, defaulting to \code{\link{hutch_dissonance_function}}.
+Custom functions may be specified here as long as they use the same parameter list
+as the original function.}
 
 \item{...}{Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.}
 }

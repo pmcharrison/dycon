@@ -9,30 +9,64 @@
 #' * Two-element lists will be treated as finalised spectra,
 #' with the first element being a numeric vector of frequencies,
 #' and the second element being a numeric vector of amplitudes.
+#'
 #' @param a Parameter passed to \code{\link{hutch_g}()}.
+#'
 #' @param b Parameter passed to \code{\link{hutch_g}()}.
+#'
 #' @param cbw_cut_off Parameter passed to \code{\link{hutch_g}()}.
+#'
+#' @param dissonance_function
+#' Function for computing dissonance contribution as a function of
+#' critical bandwidth distance, defaulting to \code{\link{hutch_dissonance_function}}.
+#' Custom functions may be specified here as long as they use the same parameter list
+#' as the original function.
+#'
 #' @return Numeric scalar, identifying the roughness of the spectrum.
+#'
 #' @references
 #' \insertAllCited{}
+#'
 #' @rdname roughness_hutch
+#'
 #' @md
+#'
 #' @export
-roughness_hutch <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
+roughness_hutch <- function(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...) {
   UseMethod("roughness_hutch")
 }
 
 #' @param ... Further arguments to pass to \code{\link[hrep]{sparse_fr_spectrum}}.
 #' @rdname roughness_hutch
 #' @export
-roughness_hutch.default <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
+roughness_hutch.default <- function(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...
+) {
   x <- hrep::sparse_fr_spectrum(x, ...)
-  roughness_hutch(x, cbw_cut_off = cbw_cut_off, a = a, b = b)
+  roughness_hutch(x, cbw_cut_off = cbw_cut_off, a = a, b = b, dissonance_function = dissonance_function)
 }
 
 #' @rdname roughness_hutch
 #' @export
-roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b = 2, ...) {
+roughness_hutch.sparse_fr_spectrum <- function(
+  x,
+  cbw_cut_off = 1.2,
+  a = 0.25,
+  b = 2,
+  dissonance_function = hutch_dissonance_function,
+  ...
+) {
   frequency <- hrep::freq(x)
   amplitude <- hrep::amp(x)
   n <- length(frequency)
@@ -45,9 +79,9 @@ roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b
         df[df$i < df$j, ]
       })
     df$a_i_a_j <- amplitude[df$i] * amplitude[df$j]
-    df$g_ij <- hutch_g(
-      y = hutch_y(f1 = frequency[df$i],
-                  f2 = frequency[df$j]),
+    df$g_ij <- dissonance_function(
+      f1 = frequency[df$i],
+      f2 = frequency[df$j],
       cbw_cut_off = cbw_cut_off,
       a = a,
       b = b
@@ -55,6 +89,25 @@ roughness_hutch.sparse_fr_spectrum <- function(x, cbw_cut_off = 1.2, a = 0.25, b
     numerator <- sum(df$a_i_a_j * df$g_ij)
     numerator / denominator
   }
+}
+
+#' Get dissonance contribution
+#'
+#' Computes the dissonance contribution of a pair of pure tones.
+#'
+#' @inheritParams roughness_hutch
+#' @inheritParams hutch_cbw
+#'
+#' @return Numeric vector of dissonance contributions.
+#'
+#' @export
+hutch_dissonance_function <- function(f1, f2, cbw_cut_off = 1.2, a = 0.25, b = 2) {
+  hutch_g(
+    y = hutch_y(f1 = f1, f2 = f2),
+    cbw_cut_off = cbw_cut_off,
+    a = a,
+    b = b
+  )
 }
 
 #' Critical bandwidth (Hutchison & Knopoff)
