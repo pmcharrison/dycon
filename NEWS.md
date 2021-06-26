@@ -1,3 +1,5 @@
+# dycon 0.3.0
+
 - Added support for customised dissonance functions to `roughness_hutch`.
 
 # dycon 0.2.2
