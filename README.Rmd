@@ -32,7 +32,7 @@ You can install the current version of `dycon` from Github as follows:
 
 ``` r
 if (!require(devtools)) install.packages("devtools")
-devtools::install_github("dycon")
+devtools::install_github("pmcharrison/dycon")
 ```
 
 ## Usage
